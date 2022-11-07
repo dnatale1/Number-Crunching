@@ -3,12 +3,12 @@
 
    Author: David Galilei Natale
 
-   Last edited: October 2022
+   Last edited: November 2022
 
    This program approximates the nth Fibonacci number entered by the user.
    This is implemented by repeatedly squaring the 2-D array {{1,1}{1,0}}
 
-   NOTE: For Fibonacci values that are 2^n - 1, 2^n or 2^n + 1, the computation
+   NOTE: For Fibonacci values that are 2^n the computation
          is performed instantaneously.
 
    I used Intel compiler 19.0.5 and Boost 1.75.0.   
@@ -51,21 +51,21 @@ int main()
     using namespace boost::multiprecision; 
 
     long double A[2][2], B[2][2], fibArray[2][2];
-    int128_t           n = 0;
-    int128_t           eCounter1 = 0;
-    int128_t           eCounter2 = 0;
-    int128_t           eCounter3 = 0;
-    int128_t           eCounter4 = 0;
+    uint128_t           n = 0;
+    uint128_t           eCounter1 = 0;
+    uint128_t           eCounter2 = 0;
+    uint128_t           eCounter3 = 0;
+    uint128_t           eCounter4 = 0;
 
-    int128_t           fibTrackingVariable = 0;
-    int128_t           fibTrackingVariableMinus = 0;
-    int128_t           fibTrackingVariablePlus = 0;
+    uint128_t           fibTrackingVariable = 0;
+    uint128_t           fibTrackingVariableMinus = 0;
+    uint128_t           fibTrackingVariablePlus = 0;
 
     struct timeb  startTimeW, endTimeW;
     time_t startTimeC, endTimeC;
 
     //Fibonacci number to be approximated.
-    n = 309485009821345068724781055;
+    n = 170141183460469231731687303715884105728;
   
     getTime(&startTimeC, &startTimeW);
 
@@ -78,7 +78,7 @@ int main()
             int i, j;
 
 	   /* The 3 nested for loops below initialize A and B matrices 
-          with {{1,1}{1,0}}. */
+              with {{1,1}{1,0}}. */
 	    for(i = 0; i < 1; i++)
     	    {	
       		for(j = 0; j < 2; j++)
@@ -124,16 +124,13 @@ int main()
 
    	   fibTrackingVariable = 2;
 
-           int128_t exponent = 2;
+           uint128_t exponent = 2;
 
         /* Below while loop computes the # that's (pow(2,x) + 1) <= nth Fibonacci #
             (where x is a positive integer).                                   */
           
 	    while(n >  (exponent * 2) - 2)
-	  // while(n > (pow(2.0,exponent) - 2))
-        {
-		cout<<"\n\nBeginning While Exponent = "<<exponent<<"  fibTrackingVariable = "<<fibTrackingVariable;
-        cout<<"\neCounter1 = "<<eCounter1<<"  eCounter2 = "<<eCounter2<<"  eCounter3 = "<<eCounter3<<"  eCounter4 = "<<eCounter4;
+            {
       		eCounter1 *= 2;
       		eCounter2 *= 2;
       		eCounter3 *= 2; 
@@ -177,34 +174,26 @@ int main()
       		}
     		exponent *= 2;
     		fibTrackingVariable *= 2;
-		cout<<"\nEnding While    Exponent = "<<exponent<<"  fibTrackingVariable = "<<fibTrackingVariable;
-		cout<<"\neCounter1 = "<<eCounter1<<"  eCounter2 = "<<eCounter2<<"  eCounter3 = "<<eCounter3<<"  eCounter4 = "<<eCounter4;
    	   } //end while
-           cout<<"\n\nOutside While1\n";
-           cout<<"\nOutside While2\n";
-           cout<<"\nOutside While3\n";
+           
 
-           cout<<"\nfibTrackingVariable =  "<<fibTrackingVariable;
            fibTrackingVariableMinus = fibTrackingVariable - 1;
            fibTrackingVariablePlus  = fibTrackingVariable + 1;
-	   cout<<"\nfibTrackingVariableMinus =  "<<fibTrackingVariableMinus;
-	   cout<<"\nfibTrackingVariablePlus  =  "<<fibTrackingVariablePlus;
-
-       cout<<"\neCounter1 = "<<eCounter1<<"  eCounter2 = "<<eCounter2<<"  eCounter3  =  "<<eCounter3<<"  eCounter4 =  "<<eCounter4;
+	   
 	   //Starts where the matrixSquare() function left off.
-   	   int128_t eNumber1 = eCounter1 * 2466;
-       int128_t eNumber2 = eCounter2 * 2466;
-       int128_t eNumber3 = eCounter3 * 2466;
-       int128_t eNumber4 = eCounter4 * 2466;
+   	   uint128_t eNumber1 = eCounter1 * 2466;
+           uint128_t eNumber2 = eCounter2 * 2466;
+           uint128_t eNumber3 = eCounter3 * 2466;
+           uint128_t eNumber4 = eCounter4 * 2466;
            
    	   if(fibTrackingVariablePlus == n)
    	   {
        		cout<<"\nFIBONACCI # "<<n<<" = "<<setprecision(2466)<<fibArray[0][0]
            	     <<" e+"<<eNumber1<<"\n";
-       }	
+           }	
 
    	   //Note: This is the same value that's stored in fibArray[1][0] 
-       else if(fibTrackingVariable == n) 
+           else if(fibTrackingVariable == n) 
    	   {
        		cout<<"\nFIBONACCI # "<<n<<" = "<<setprecision(2466)<<fibArray[0][1]
                 <<" e+"<<eNumber2<<"\n";
@@ -222,7 +211,7 @@ int main()
       		long double result   = fibArray[0][0];
       		long double previous = fibArray[0][1];
       		long double sum = 0;
-		    int128_t z = 0;
+		uint128_t z = 0;
 
       		if(result > UPPER_THRESHOLD)
       		{
@@ -246,6 +235,7 @@ int main()
           		previous = result;
           		result = sum;
       		}
+
 
 
       		//if answer is <= 1e+2466
@@ -291,12 +281,16 @@ void displayTimes(time_t *startCPU, time_t *endCPU, struct timeb *startWall,
 
 
 
+
+
+
+
 /*                               SAMPLE RUN:
 
-(Note:  This is 2 ^ 88 - 1)
+(Note:  This is 2 ^ 127 which is the maximum 2 ^ n value for the uint_128t data type.)
 
 
-FIBONACCI # 309485009821345068724781055 = 420142355175177343983405658648215739517719383665608816574278173875922414719525525417672578336769817317521439211597313584027880262954855254338941729856706816273906707264205400423808468010154563215772846211091095420846272042189065939650639953842374465530185757584527176989147788012235599425722339427021415938478890476109583046505679612509018945756428511303607677861934682803299865052790861027270556651469365194903005434304922095339942344572469338197939318339918540422339349431043100225171595539118296123953250307396425542962535772319223438531843675469660880559567654324154683270109618960219309358421989600258574911085510469816919380218979729588182656832332441711717468118361860525245399088456011120333974170377949900493796592368813344274214601814975464478380850025551419411481290335004960198430042286946246445005448825556196914609099013624197042815798120117204093082220166671260187706379807145754312386128277824869033726630761134149495336510735190197049367583651092065343311397044786307903242465713122372280207338426077351558516659053762932563528476091814877934831079142165734468986600332099766615969628160 e+64678541895304398415213866
+FIBONACCI # 170141183460469231731687303715884105728 = 368057672660167126440437400944763880115835794249751706077639890239112129560911475959995865680437068887602440596361498359844257542708387743836946321317219391145255222347074893600805717348230545110224757601053996184642905654078733360351674525705830400 e+35557404440742175636262723294815102620
 
 
 Wall-clock time = 0 seconds
