@@ -8,7 +8,7 @@
  *  I used Boost 1.72 and GNU compiler 9.1.0.
  *
  *  Compiled with: g++ -O3 matrixMult5.cpp -o proj5Main -lboost_regex
- *                 /.proj5Main
+ *                 ./proj5Main
  *
  *  Program requires 60GB RAM to run.
  *
