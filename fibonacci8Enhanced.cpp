@@ -3,7 +3,7 @@
 
    Author: David Galilei Natale
 
-   Last edited: November 2022
+   Last edited: December 2022
 
    This program approximates the nth Fibonacci number entered by the user.
    This is implemented by repeatedly squaring the 2-D array {{1,1}{1,0}}
@@ -11,14 +11,12 @@
    NOTE: For Fibonacci values that are 2^n the computation
          is performed instantaneously.
 
-   I used Intel compiler 19.0.5 and Boost 1.75.0.   
+   I used Boost 1.72 and GNU compiler 9.1.0.
+ 
+   Compiled with: g++ -O3 fibonacci8Enhanced.cpp -o projFibo8 -lboost_regex
+                  ./projFibo8
 
-   Compiled with:
-
-   icpc -fma -pc80 -axSSE4.2 -O3 fibonacci8Enhanced.cpp -o pFibo8 -lboost_regex
-   ./pFibo8
-
-   */
+*/
 
 #include <iostream>
 #include <cstdlib>
@@ -51,21 +49,21 @@ int main()
     using namespace boost::multiprecision; 
 
     long double A[2][2], B[2][2], fibArray[2][2];
-    uint128_t           n = 0;
-    uint128_t           eCounter1 = 0;
-    uint128_t           eCounter2 = 0;
-    uint128_t           eCounter3 = 0;
-    uint128_t           eCounter4 = 0;
+    uint512_t           n = 0;
+    uint512_t           eCounter1 = 0;
+    uint512_t           eCounter2 = 0;
+    uint512_t           eCounter3 = 0;
+    uint512_t           eCounter4 = 0;
 
-    uint128_t           fibTrackingVariable = 0;
-    uint128_t           fibTrackingVariableMinus = 0;
-    uint128_t           fibTrackingVariablePlus = 0;
+    uint512_t           fibTrackingVariable = 0;
+    uint512_t           fibTrackingVariableMinus = 0;
+    uint512_t           fibTrackingVariablePlus = 0;
 
     struct timeb  startTimeW, endTimeW;
     time_t startTimeC, endTimeC;
 
-    //Fibonacci number to be approximated.
-    n = 170141183460469231731687303715884105728;
+    cout<<"\nEnter Nth Fibonacci number: ";
+    cin>>n;
   
     getTime(&startTimeC, &startTimeW);
 
@@ -112,8 +110,8 @@ int main()
                     fibArray[i][j] = 0.0;
 
 
-	    /* Computes the number that's (pow(2,x) + 1) <= nth Fibonacci number
-               (where x is a positive integer).                              */
+	    // Computes the number that's (pow(2,x) + 1) <= nth Fibonacci number
+           
             int k;
 
             for(i = 0; i < 2; i++)
@@ -124,11 +122,10 @@ int main()
 
    	   fibTrackingVariable = 2;
 
-           uint128_t exponent = 2;
+           uint512_t exponent = 2;
 
-        /* Below while loop computes the # that's (pow(2,x) + 1) <= nth Fibonacci #
-            (where x is a positive integer).                                   */
-          
+        // Below while loop computes the # that's (pow(2,x) + 1) <= nth Fibonacci #
+                                                  
 	    while(n >  (exponent * 2) - 2)
             {
       		eCounter1 *= 2;
@@ -144,7 +141,7 @@ int main()
         		}
       		}
 
-      		//re-initialize fibArray to {{0,0}{0,0}} 
+      		//Re-initialize fibArray to {{0,0}{0,0}} 
       		for(i = 0; i < 2; i++)
         		for(j = 0; j < 2; j++)
             			fibArray[i][j] = 0.0;
@@ -181,10 +178,10 @@ int main()
            fibTrackingVariablePlus  = fibTrackingVariable + 1;
 	   
 	   //Starts where the matrixSquare() function left off.
-   	   uint128_t eNumber1 = eCounter1 * 2466;
-           uint128_t eNumber2 = eCounter2 * 2466;
-           uint128_t eNumber3 = eCounter3 * 2466;
-           uint128_t eNumber4 = eCounter4 * 2466;
+   	   uint512_t eNumber1 = eCounter1 * 2466;
+       	   uint512_t eNumber2 = eCounter2 * 2466;
+           uint512_t eNumber3 = eCounter3 * 2466;
+           uint512_t eNumber4 = eCounter4 * 2466;
            
    	   if(fibTrackingVariablePlus == n)
    	   {
@@ -211,7 +208,7 @@ int main()
       		long double result   = fibArray[0][0];
       		long double previous = fibArray[0][1];
       		long double sum = 0;
-		uint128_t z = 0;
+		uint512_t z = 0;
 
       		if(result > UPPER_THRESHOLD)
       		{
@@ -285,19 +282,20 @@ void displayTimes(time_t *startCPU, time_t *endCPU, struct timeb *startWall,
 
 
 
+
+
+
+
+
 /*                               SAMPLE RUN:
 
-(Note:  This is 2 ^ 127 which is the maximum 2 ^ n value for the uint_128t data type.)
+(Note:  This is 2 ^ 264)
 
 
-FIBONACCI # 170141183460469231731687303715884105728 = 368057672660167126440437400944763880115835794249751706077639890239112129560911475959995865680437068887602440596361498359844257542708387743836946321317219391145255222347074893600805717348230545110224757601053996184642905654078733360351674525705830400 e+35557404440742175636262723294815102620
+FIBONACCI # 29642774844752946028434172162224104410437116074403984394101141506025761187823616 = 54594969120436407430633908216879760621308038134219053086085957377515078344990557149054647267424444428851179683840 e+6194973565266347894731728391229622034055338310142690262390371410344053728150910
 
 
 Wall-clock time = 0 seconds
 CPU time = 0 seconds
 
 */
-
-
-
-
