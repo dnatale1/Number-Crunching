@@ -3,16 +3,16 @@
  *
  *  Author: David Galilei Natale
  *
- *  February 2023
+ *  May 2023
  *
  *  I used Boost 1.72 and GNU compiler 9.1.0.
  *
  *  Compiled with: g++ -O3 matrixMult5.cpp -o proj5Main -lboost_regex
  *                 /.proj5Main
  *
- *  This program requires 68GB RAM to run.
+ *  This program requires 72GB RAM to run.
  *
- *  The last entry in the MATRIXRESULT file is:      649069500493521508856000. 
+ *  The last entry in the MATRIXRESULT file is:      767202894351139314341000. 
  *
  *  Program ran for 5 days on the Pitzer cluster at the Ohio Supercomputer Center.                
  */
@@ -33,9 +33,9 @@ int main()
 
 	ofstream outFile1, outFile2, outFile3;
 
-	int128_t  A[26463][26464];
-	int128_t  B[26464][26467];
-	int128_t  R[26463][26467];
+	int128_t  A[27363][27364];
+	int128_t  B[27364][27367];
+	int128_t  R[27363][27367];
 	unsigned long long  r, c, p;
 	int128_t  sum = 0;
 
@@ -49,9 +49,9 @@ int main()
 
 	outFile1.open("MATRIX1");
 	outFile1<<"\nMATRIX 1:\n\n"; 	
-	for(r = 0; r < 26463; r++)
+	for(r = 0; r < 27363; r++)
 	{
-		for(p = 0; p < 26464; p++)
+		for(p = 0; p < 27364; p++)
 		{
 			sum = sum + 10;
 			A[r][p] = sum;
@@ -60,9 +60,9 @@ int main()
 
 
 	
-	for( r = 0; r < 26463; r++)
+	for( r = 0; r < 27363; r++)
 	{
-		for(p = 0; p < 26464; p++)
+		for(p = 0; p < 27364; p++)
 		{
 			outFile1<<A[r][p]<<" ";
 		}
@@ -75,18 +75,18 @@ int main()
 	outFile2.open("MATRIX2");
 	outFile2<<"\nMATRIX 2:\n\n";	
 	sum = 0;
-	for(p = 0; p < 26464; p++)
+	for(p = 0; p < 27364; p++)
 	{
-		for(c = 0; c < 26467; c++)
+		for(c = 0; c < 27367; c++)
 		{
 			sum = sum + 10;
 			B[p][c] = sum;
 		}
 	}
 
-	for(p = 0; p < 26464; p++)
+	for(p = 0; p < 27364; p++)
 	{
-		for(c = 0; c < 26467; c++)
+		for(c = 0; c < 27367; c++)
 		{
 			outFile2<<B[p][c]<<" ";
 		}
@@ -98,12 +98,12 @@ int main()
 
 	outFile3.open("MATRIXRESULT");
 	outFile3<<"\nMATRIX RESULT:\n\n";
-	for(r = 0; r < 26463; r++)
+	for(r = 0; r < 27363; r++)
 	{
-		for(c = 0; c < 26467; c++)
+		for(c = 0; c < 27367; c++)
 		{
 			R[r][c] = 0;
-			for(p = 0; p < 26464; p++)
+			for(p = 0; p < 27364; p++)
 			{
 				R[r][c] += A[r][p] * B[p][c];
 			}
@@ -111,9 +111,9 @@ int main()
 	}
 
 	
-	for(r = 0; r < 26463; r++)
+	for(r = 0; r < 27363; r++)
 	{
-		for(c = 0; c < 26467; c++)
+		for(c = 0; c < 27367; c++)
 		{
 			outFile3<<R[r][c]<<" ";
 		}
