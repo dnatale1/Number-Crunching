@@ -11,11 +11,11 @@
  *  icpc -fma -pc80 -axSSE4.2 -O3 matrixMult6.cpp -o proj6
  *  ./proj6
  *
- *  This program requires 52GB RAM to run.
+ *  This program requires 60GB RAM to run.
  *
- *  The last entry in the MATRIXRESULT file is:  1423287705335671897980928. 
+ *  The last entry in the MATRIXRESULT file is:  1887947597387608204509184. 
  *
- *  Program ran for 9 hours on the Pitzer cluster at the Ohio Supercomputer Center.                
+ *  Program ran for 11 hours on the Pitzer cluster at the Ohio Supercomputer Center.                
  */
 
 #include <iostream>
@@ -34,9 +34,9 @@ int main()
 
 	ofstream outFile1, outFile2, outFile3;
 
-	long double  A[30963][30964];
-	long double  B[30964][30967];
-	long double  R[30963][30967];
+	long double  A[32763][32764];
+	long double  B[32764][32767];
+	long double  R[32763][32767];
 	unsigned long long  r, c, p;
 	unsigned long long  sum = 0;
 
@@ -50,9 +50,9 @@ int main()
 
 	outFile1.open("MATRIX1");
 	outFile1<<"\nMATRIX 1:\n\n"; 	
-	for(r = 0; r < 30963; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(p = 0; p < 30964; p++)
+		for(p = 0; p < 32764; p++)
 		{
 			sum = sum + 10;
 			A[r][p] = sum;
@@ -61,9 +61,9 @@ int main()
 
 
 	
-	for( r = 0; r < 30963; r++)
+	for( r = 0; r < 32763; r++)
 	{
-		for(p = 0; p < 30964; p++)
+		for(p = 0; p < 32764; p++)
 		{
 			outFile1<<setprecision(30)<<A[r][p]<<" ";
 		}
@@ -76,18 +76,18 @@ int main()
 	outFile2.open("MATRIX2");
 	outFile2<<"\nMATRIX 2:\n\n";	
 	sum = 0;
-	for(p = 0; p < 30964; p++)
+	for(p = 0; p < 32764; p++)
 	{
-		for(c = 0; c < 30967; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			sum = sum + 10;
 			B[p][c] = sum;
 		}
 	}
 
-	for(p = 0; p < 30964; p++)
+	for(p = 0; p < 32764; p++)
 	{
-		for(c = 0; c < 30967; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			outFile2<<setprecision(30)<<B[p][c]<<" ";
 		}
@@ -99,12 +99,12 @@ int main()
 
 	outFile3.open("MATRIXRESULT");
 	outFile3<<"\nMATRIX RESULT:\n\n";
-	for(r = 0; r < 30963; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(c = 0; c < 30967; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			R[r][c] = 0;
-			for(p = 0; p < 30964; p++)
+			for(p = 0; p < 32764; p++)
 			{
 				R[r][c] += A[r][p] * B[p][c];
 			}
@@ -112,9 +112,9 @@ int main()
 	}
 
 	
-	for(r = 0; r < 30963; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(c = 0; c < 30967; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			outFile3<<setprecision(30)<<R[r][c]<<" ";
 		}
