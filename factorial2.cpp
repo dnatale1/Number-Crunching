@@ -1,19 +1,20 @@
+
 /*                      factorial2.cpp
 
    Author: David Galilei Natale
 
-   Last edited: March 6, 2012
+   Last edited: October 2023
 
-   Used Intel C++ Compiler running on Ubuntu 10.04.
+   Ran program on the Intel Developer Cloud.
 
-   On my computer, powered with an Intel 5.0 GHz CPU, this program can            
-   approximate 31.1 billion! in 47 seconds. This is a 3658-fold increase in 
+   Used Intel C++ compiler 2021.10.0.
+
+   Running on Intel's i9-11900K CPU at 3.5 GHz, this program can            
+   approximate 46 billion! in 47 seconds. This is a 5411-fold increase in 
    speed compared to a similar program I ran on a VAX computer back in 1992.
 
-
-   To run, on the command line type: 
-
-   icpc -fma -pc80 -axSSE4.2 -O3 factorial2.cpp -o proj2main [Enter]
+   Compiled with:
+   icpc -O3 factorial2.cpp -o proj2main [Enter]
    ./proj2main
 
                                                                            */
