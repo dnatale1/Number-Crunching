@@ -3,18 +3,18 @@
  *
  *  Author: David Galilei Natale
  *
- *  August 2023
+ *  December 2023
  *
- *  I used Boost 1.72 and GNU compiler 9.1.0.
+ *  I used Boost 1.72 and GNU compiler 11.2.0.
  *
  *  Compiled with: g++ -O3 matrixMult5.cpp -o proj5Main -lboost_regex
- *                 /.proj5Main
+ *                 ./proj5Main
  *
- *  This program requires 80GB RAM to run.
+ *  This program requires 96GB RAM to run.
  *
- *  The last entry in the MATRIXRESULT file is:    1053174833938909533274500. 
+ *  The last entry in the MATRIXRESULT file is:   1887947597387608203251000. 
  *
- *  Program ran for 4 days on the Pitzer cluster at the Ohio Supercomputer Center.                
+ *  Program ran for 1 week on the Pitzer cluster at the Ohio Supercomputer Center.                
  */
 
 #include <iostream>
@@ -33,9 +33,9 @@ int main()
 
 	ofstream outFile1, outFile2, outFile3;
 
-	int128_t  A[29153][29154];
-	int128_t  B[29154][29157];
-	int128_t  R[29153][29157];
+	int128_t  A[32763][32764];
+	int128_t  B[32764][32767];
+	int128_t  R[32763][32767];
 	unsigned long long  r, c, p;
 	int128_t  sum = 0;
 
@@ -49,9 +49,9 @@ int main()
 
 	outFile1.open("MATRIX1");
 	outFile1<<"\nMATRIX 1:\n\n"; 	
-	for(r = 0; r < 29153; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(p = 0; p < 29154; p++)
+		for(p = 0; p < 32764; p++)
 		{
 			sum = sum + 10;
 			A[r][p] = sum;
@@ -60,9 +60,9 @@ int main()
 
 
 	
-	for( r = 0; r < 29153; r++)
+	for( r = 0; r < 32763; r++)
 	{
-		for(p = 0; p < 29154; p++)
+		for(p = 0; p < 32764; p++)
 		{
 			outFile1<<A[r][p]<<" ";
 		}
@@ -75,18 +75,18 @@ int main()
 	outFile2.open("MATRIX2");
 	outFile2<<"\nMATRIX 2:\n\n";	
 	sum = 0;
-	for(p = 0; p < 29154; p++)
+	for(p = 0; p < 32764; p++)
 	{
-		for(c = 0; c < 29157; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			sum = sum + 10;
 			B[p][c] = sum;
 		}
 	}
 
-	for(p = 0; p < 29154; p++)
+	for(p = 0; p < 32764; p++)
 	{
-		for(c = 0; c < 29157; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			outFile2<<B[p][c]<<" ";
 		}
@@ -98,12 +98,12 @@ int main()
 
 	outFile3.open("MATRIXRESULT");
 	outFile3<<"\nMATRIX RESULT:\n\n";
-	for(r = 0; r < 29153; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(c = 0; c < 29157; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			R[r][c] = 0;
-			for(p = 0; p < 29154; p++)
+			for(p = 0; p < 32764; p++)
 			{
 				R[r][c] += A[r][p] * B[p][c];
 			}
@@ -111,9 +111,9 @@ int main()
 	}
 
 	
-	for(r = 0; r < 29153; r++)
+	for(r = 0; r < 32763; r++)
 	{
-		for(c = 0; c < 29157; c++)
+		for(c = 0; c < 32767; c++)
 		{
 			outFile3<<R[r][c]<<" ";
 		}
