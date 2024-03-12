@@ -30,13 +30,11 @@ t2 = datetime.datetime.now()
 print (t2 - t1)
 
 
-#(2 ^ 1024) ^ 4194304 has  1292913987  digits
+# (2 ^ 1024) ^ 8388608 has  2585827973  digits
 
 
-#The first 10 digits are:  3103280543
+# The first 10 digits are:  9630350133
 
 
-#The last 10 digits are:  4 6 9 1 9 8 2 3 3 6
-#2:54:56.611862
-
-
+# The last 10 digits are:  1 3 3 6 0 1 6 8 9 6
+# 8:44:15.728184
