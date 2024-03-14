@@ -1,16 +1,15 @@
-
 /*                           exponent1.cpp
 
    Author: David Galilei Natale
 
-    May 2023
+   March 2024
 
    This program computes X to the Yth power.
    The program prompts the user to enter a base (X) and an exponent (Y). 
 
    I used Intel compiler 2021.5.0.
 
-   Compiled with: icpc -fma -pc80 -axSSE4.2 -O3 exponent1.cpp -o pExp1
+   Compiled with: icpc -O3 exponent1.cpp -o pExp1
                   ./pExp1                  
                                                                          */
 
@@ -21,24 +20,21 @@
 #include <ctime>
 #include <climits>
 #include <cfloat>
+#include <iomanip>
 
 using namespace std;
 
-//This constant is 1e+2450.
-const long double UPPER_THRESHOLD = (((((((((LDBL_MAX/1.18973149535723177)/
-1e+308)/1e+308)/1e+308)/1e+308)/1e+308)/1e+308)/1e+308)/1e+308)/1e+18;
+//This constant is 1e+2466.
+  const long double UPPER_THRESHOLD =  LDBL_MAX/1.18973149535723176502126385303097020516906332229462420044032373389173700552297072261641029033652888285354569780749557731/1e+308/1e+308/1e+308/1e+308/1e+308/1e+308/1e+308/1e+308/100;
 
 
 void getTime(time_t *, struct timeb *);
 
-void counterLessThanOrEqualExponentDivBy2(unsigned long long *counter, 
-                                          unsigned long long *exponent,
+void counterLessThanOrEqualExponentDivBy2(unsigned long long *counter, unsigned long long *exponent,
                                           long double *base,
-                                          unsigned long long *eCounter,
-                                          unsigned long long *i);
+                                          unsigned long long *eCounter, unsigned long long *i);
 
-void counterLessThanExponent(unsigned long long  *counter, 
-                             unsigned long long *exponent,
+void counterLessThanExponent(unsigned long long  *counter, unsigned long long *exponent,
                              long double *base, long double  *originalBase,
                              unsigned long long *eCounter);
 
@@ -52,11 +48,11 @@ int main()
 
      unsigned long long i = 1,  counter = 1;
 
-     //variable to keep track of the # of "e+2450"s in the calculation
+     //variable to keep track of the # of "e+2466"s in the calculation
      unsigned long long eCounter = 0;
 
      /* variable to calculate the correct "e+(number)" 
-        for answers greater than 10 to the 2450th power  */
+        for answers greater than 10 to the 2466th power  */
      unsigned long long eNumber = 0;
 
      struct timeb  startTimeW, endTimeW;
@@ -68,6 +64,7 @@ int main()
      cout<<"\nENTER EXPONENT THAT IS A POSITIVE INTEGER: ";
      cin>>exponent;
      
+
      getTime(&startTimeC, &startTimeW);
 
      long double originalBase = base;
@@ -80,7 +77,7 @@ int main()
 
      if(eCounter >= 1)
      {
-           eNumber = eCounter * 2450;
+           eNumber = eCounter * 2466;
            cout<<"\nANSWER: "<<base<<"   e+"<<eNumber<<"\n";
      }
      else
@@ -105,11 +102,8 @@ void getTime(time_t *cpuTime, struct timeb *wallClockTime)
 }
 
 
-void counterLessThanOrEqualExponentDivBy2(unsigned long long  *counter, 
-                                          unsigned long long *exponent,
-                                          long double *base, 
-                                          unsigned long long *eCounter, 
-                                          unsigned long long *i)
+void counterLessThanOrEqualExponentDivBy2(unsigned long long  *counter, unsigned long long *exponent,
+      long double *base, unsigned long long *eCounter, unsigned long long *i)
 {
         while (*counter <= (*exponent/2))
         {
@@ -127,8 +121,7 @@ void counterLessThanOrEqualExponentDivBy2(unsigned long long  *counter,
 }
 
 
-void counterLessThanExponent(unsigned long long *counter, 
-                             unsigned long long *exponent,
+void counterLessThanExponent(unsigned long long *counter, unsigned long long *exponent,
                              long double *base, long double  *originalBase,
                              unsigned long long *eCounter)
 {
