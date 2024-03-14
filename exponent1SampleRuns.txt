@@ -3,44 +3,54 @@
 NOTE: Run on the Pitzer cluster at the Ohio Supercomputer Center.
 
 
+ENTER BASE THAT IS A POSITIVE OR NEGATIVE INTEGER: 2
+
+ENTER EXPONENT THAT IS A POSITIVE INTEGER: 100000000000000  (100 trillion)
+
+ANSWER: 1.31681e+592   e+30102999565806
+
+Wall-clock time = 56655 seconds
+CPU time = 56655 seconds
+__________________________________________________________________________________
+
 ENTER BASE THAT IS A POSITIVE OR NEGATIVE INTEGER: 1000000000000  (1 trillion)
 
 ENTER EXPONENT THAT IS A POSITIVE INTEGER: 1000000000000  (1 trillion)
 
-ANSWER: 1e+1650   e+11999999998350
+ANSWER: 1e+1632   e+11999999998368
 
-Wall-clock time = 769 seconds
-CPU time = 769 seconds
+Wall-clock time = 1108 seconds
+CPU time = 1108 seconds
 __________________________________________________________________________________
 
 ENTER BASE THAT IS A POSITIVE OR NEGATIVE INTEGER: 10000000000000  (10 trillion)
 
 ENTER EXPONENT THAT IS A POSITIVE INTEGER: 10000000000000  (10 trillion)
 
-ANSWER: 1e+1950   e+129999999998050
+ANSWER: 1e+418   e+129999999999582
 
-Wall-clock time = 2416 seconds
-CPU time = 2416 seconds
+Wall-clock time = 2292 seconds
+CPU time = 2292 seconds
 ___________________________________________________________________________________
 
 ENTER BASE THAT IS A POSITIVE OR NEGATIVE INTEGER: 100000000000000  (100 trillion)
 
 ENTER EXPONENT THAT IS A POSITIVE INTEGER: 10000000000000  (10 trillion)
 
-ANSWER: 1.00001e+2100   e+139999999997900
+ANSWER: 1.00001e+1778   e+139999999998222
 
-Wall-clock time = 2402 seconds
-CPU time = 2402 seconds
+Wall-clock time = 2176 seconds
+CPU time = 2176 seconds
 __________________________________________________________________________________
 
 ENTER BASE THAT IS A POSITIVE OR NEGATIVE INTEGER: 100000000000000 (100 trillion)
 
 ENTER EXPONENT THAT IS A POSITIVE INTEGER: 100000000000000 (100 trillion)
 
-ANSWER: 1.00005e+1400   e+1399999999998600
+ANSWER: 1.00005e+518   e+1399999999999482
 
-Wall-clock time = 60206 seconds
-CPU time = 60206 seconds
+Wall-clock time = 60011 seconds
+CPU time = 60011 seconds
 
 
 
