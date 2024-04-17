@@ -4,7 +4,7 @@
 
 # Author: David Galilei Natale
 
-# Last edited: March 2024
+# Last edited: April 2024
 
 # I used Intel's Distribution for Python.
 
@@ -15,11 +15,11 @@ import math
 
 t1 = datetime.datetime.now()
 
-b = (2 ** 1024) ** 16777216
+b = (2 ** 1024) ** 33554432
 
 c = math.trunc(math.log10(b) + 1)
 
-print ('(2 ^ 1024) ^ 16777216 has ', c , ' digits')
+print ('(2 ^ 1024) ^ 33554432 has ', c , ' digits')
 
 print ('\n\nThe first 10 digits are: ', b // 10**(c - 10))
 
@@ -30,11 +30,11 @@ t2 = datetime.datetime.now()
 print (t2 - t1)
 
 
-# (2 ^ 1024) ^ 16777216 has  5171655946  digits
+# (2 ^ 1024) ^ 33554432 has  10343311892  digits
 
 
-# The first 10 digits are:  9274364370
+# The first 10 digits are:  8601383447
 
 
-# The last 10 digits are:  6 3 9 7 4 7 4 8 1 6
-# 1 day, 19:26:49.749055
+# The last 10 digits are:  1 3 5 4 2 3 3 8 5 6
+# 5 days, 17:46:58.368553
