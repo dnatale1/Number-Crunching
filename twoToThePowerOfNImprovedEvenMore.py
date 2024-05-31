@@ -2,14 +2,14 @@
 # twoToThePowerOfNImprovedEvenMore.py
 
 # Author: David Galilei Natale
-# Last edited: February 2024
+# Last edited: May 2024
 
-# 2^40,000,000,000 has 12,041,199,827 digits,
-# starts with 3624497533 and ends with 1787109376.
+# 2^50,000,000,000 has 15,051,499,784 digits,
+# starts with 1581465640 and ends with 1787109376.
 
 # I used Python 3.9.
 
-# Program ran for 7 days on the Pitzer cluster at the Ohio Supercomputer Center.
+# Program ran for 10 days on the Pitzer cluster at the Ohio Supercomputer Center.
 
 import datetime
 import math
@@ -18,11 +18,11 @@ import math
 
 t1 = datetime.datetime.now()
 
-b = 2**40000000000
+b = 2**50000000000
 
 c = math.trunc(math.log10(b) + 1)
 
-print ('2 ^ 40,000,000,000 has ', c , ' digits')
+print ('2 ^ 50,000,000,000 has ', c , ' digits')
 
 print ('\n\nThe first 10 digits are: ', b // 10**(c - 10))
 
