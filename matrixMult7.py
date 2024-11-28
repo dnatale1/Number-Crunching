@@ -7,9 +7,9 @@
 #
 # I used PyTorch 2.4 and Python 3.9.
 #
-# The last entry in the PYMATRIXRESULT file is: 158429733038286207243517952. 
+# The last entry in the PYMATRIXRESULT file is: 197718884467482273737867264. 
 #
-# Ran on Intel Max Series GPU 1100 in Intel's Tiber Developer Cloud for 100 minutes.
+# Ran on Intel Max Series GPU 1100 in Intel's Tiber Developer Cloud for 2 hours.
 
 
 import torch
@@ -19,10 +19,10 @@ t1 = datetime.datetime.now()
 
 sum = 0
 
-A =[[0 for a in range(79467)] for b in range(79467)]
+A =[[0 for a in range(83067)] for b in range(83067)]
 
-for a in range(79463):
-	for b in range(79464):
+for a in range(83063):
+	for b in range(83064):
 		sum = sum +10
 		A[a][b] = sum
 
@@ -30,10 +30,10 @@ T = torch.tensor(A)
 
 sum = 0
 
-B = [[0 for c in range(79467)] for d in range(79467)]
+B = [[0 for c in range(83067)] for d in range(83067)]
 
-for c in range(79464):
-	for d in range(79467):
+for c in range(83064):
+	for d in range(83067):
 		sum = sum + 10
 		B[c][d] = sum
 
