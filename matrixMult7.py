@@ -3,13 +3,13 @@
 #
 # Author: David Galilei Natale
 #
-# November 2024
+# December 2024
 #
 # I used PyTorch 2.4 and Python 3.9.
 #
-# The last entry in the PYMATRIXRESULT file is: 197718884467482273737867264. 
+# The last entry in the PYMATRIXRESULT file is: 244442669570514815608160256. 
 #
-# Ran on Intel Max Series GPU 1100 in Intel's Tiber Developer Cloud for 2 hours.
+# Ran on Intel Max Series GPU 1100 in Intel's Tiber Developer Cloud for 3 hours.
 
 
 import torch
@@ -19,10 +19,10 @@ t1 = datetime.datetime.now()
 
 sum = 0
 
-A =[[0 for a in range(83067)] for b in range(83067)]
+A =[[0 for a in range(86667)] for b in range(86667)]
 
-for a in range(83063):
-	for b in range(83064):
+for a in range(86663):
+	for b in range(86664):
 		sum = sum +10
 		A[a][b] = sum
 
@@ -30,10 +30,10 @@ T = torch.tensor(A)
 
 sum = 0
 
-B = [[0 for c in range(83067)] for d in range(83067)]
+B = [[0 for c in range(86667)] for d in range(86667)]
 
-for c in range(83064):
-	for d in range(83067):
+for c in range(86664):
+	for d in range(86667):
 		sum = sum + 10
 		B[c][d] = sum
 
