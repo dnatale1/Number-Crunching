@@ -3,7 +3,7 @@
 
    Author: David Galilei Natale
 
-   Last edited: May 2026
+   Last edited: June 2026
 
    This program multiplies a 2-D matrix and a vector and stores the 
    products in another vector.
@@ -13,7 +13,7 @@
    Compiled with:
    g++ -O3 matrixVector.cpp -o pMV [Enter]
    ./pMV
-                                                                           */
+                                                                     */
 
 #include <iostream>
 #include <cstdlib>
@@ -23,9 +23,6 @@
 #include <cfloat>
 
 using namespace std;
-
-//This constant is 1e+4900.
-const long double UPPER_THRESHOLD = (LDBL_MAX/1.18973149535723177)/1e+32;
 
 
 void getTime(time_t *, struct timeb *);
@@ -66,7 +63,7 @@ int main()
 
 	for(unsigned long long i = 0; i < matrix_size; i++)
 	{
-		cout<<setprecision(19)<<v2[i]<<"\n";
+		cout<<setprecision(22)<<v2[i]<<"\n";
 	}
 
 	free(A);
@@ -117,9 +114,9 @@ void displayTimes(time_t *startCPU, time_t *endCPU, struct timeb *startWall,
 
 /*                  SAMPLE RUN
 
-Matrix Size =       225,000  
+Matrix Size =       226,000  
 
-Last entry in *v2:  1,281,450,860,272,280,403,968 
+Last entry in *v2:  1,304,376,293,437,921,558,528 
 
-Time:               130 seconds  
+Time:               122 seconds  
                                                           */
