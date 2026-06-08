@@ -11,7 +11,7 @@
    Ran program on JarvisLabs GPU Cloud.
 
    Compiled with:
-   g++ -O3 matrixVector.cpp -o pMV [Enter]
+   g++ -O3 matrixVector.cpp -o pMV 
    ./pMV
                                                                      */
 
@@ -72,9 +72,7 @@ int main()
 
 	getTime(&endTimeC, &endTimeW);
 
-	displayTimes(&startTimeC, &endTimeC, &startTimeW, &endTimeW);
-
-	//Should get: 5.00, 14.00, 23.00 
+	displayTimes(&startTimeC, &endTimeC, &startTimeW, &endTimeW); 
 
       return 0;
 } //end main
@@ -114,9 +112,9 @@ void displayTimes(time_t *startCPU, time_t *endCPU, struct timeb *startWall,
 
 /*                  SAMPLE RUN
 
-Matrix Size =       226,000  
+Matrix Size =       240,000  
 
-Last entry in *v2:  1,304,376,293,437,921,558,528 
+Last entry in *v2:  1,658,862,642,145,089,552,384 
 
-Time:               122 seconds  
+Time:               182 seconds  
                                                           */
