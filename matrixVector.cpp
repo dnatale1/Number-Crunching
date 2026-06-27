@@ -8,7 +8,7 @@
    This program multiplies a 2-D matrix and a vector and stores the 
    products in another vector.
 
-   Ran program on JarvisLabs GPU Cloud.
+   Ran program on JarvisLabs GPU Cloud in India.
 
    Compiled with:
    g++ -O3 matrixVector.cpp -o pMV 
@@ -25,21 +25,20 @@
 using namespace std;
 
 
-void getTime(time_t *, struct timeb *);
+void getTime(time_t *);
 void matrix_vector_product(float *, float *, float *, unsigned long long);
-void displayTimes(time_t *, time_t *, struct timeb *, struct timeb *);
+void displayTimes(time_t *, time_t *);
 
 int main()
-{
-	
-	struct timeb  startTimeW, endTimeW;
+{	
+
 	time_t startTimeC, endTimeC;
 
 	float *A, *v1, *v2;
 
-	unsigned long long matrix_size = 3;
+	unsigned long long matrix_size = 250000;
 
-	getTime(&startTimeC, &startTimeW);
+	getTime(&startTimeC);
 
 	A =  (float *) malloc(matrix_size * matrix_size * sizeof(float));
 	v1 = (float *) malloc(matrix_size * sizeof(float));
@@ -70,18 +69,16 @@ int main()
 	free(v1);
 	free(v2);
 
-	getTime(&endTimeC, &endTimeW);
+	getTime(&endTimeC);
 
-	displayTimes(&startTimeC, &endTimeC, &startTimeW, &endTimeW); 
+	displayTimes(&startTimeC, &endTimeC); 
 
       return 0;
 } //end main
 
 
-void getTime(time_t *cpuTime, struct timeb *wallClockTime)
+void getTime(time_t *cpuTime)
 {
-	//get wall-clock time
-	ftime(wallClockTime);
 
 	//get cpu time
 	time(cpuTime);
@@ -102,19 +99,17 @@ void matrix_vector_product(float *A, float *v1, float *v2, unsigned long long ma
 }
 
 
-void displayTimes(time_t *startCPU, time_t *endCPU, struct timeb *startWall, 
-                  struct timeb *endWall)
+void displayTimes(time_t *startCPU, time_t *endCPU)
 {
-	cout<<"\nWall-clock time = "<<(endWall->time - startWall->time)<<" seconds\n";
-	cout<<"CPU time = "<<(*endCPU - *startCPU)<<" seconds\n\n";
+	cout<<"Run time = "<<(*endCPU - *startCPU)<<" seconds\n\n";
 }
 
 
 /*                  SAMPLE RUN
 
-Matrix Size =       240,000  
+Matrix Size =       250,000  
 
-Last entry in *v2:  1,658,862,642,145,089,552,384 
+Last entry in *v2:  1,953,126,575,160,082,563,072 
 
-Time:               182 seconds  
+Time:               197 seconds  
                                                           */
