@@ -3,7 +3,7 @@
 
    Author: David Galilei Natale
 
-   Last edited: June 2026
+   Last edited: July 2026
 
    This program multiplies a 2-D matrix and a vector and stores the 
    products in another vector.
@@ -36,7 +36,7 @@ int main()
 
 	float *A, *v1, *v2;
 
-	unsigned long long matrix_size = 260000;
+	unsigned long long matrix_size = 270000;
 
 	getTime(&startTimeC);
 
@@ -101,15 +101,15 @@ void matrix_vector_product(float *A, float *v1, float *v2, unsigned long long ma
 
 void displayTimes(time_t *startCPU, time_t *endCPU)
 {
-	cout<<"Run time = "<<(*endCPU - *startCPU)<<" seconds\n\n";
+	cout<<"Run Time: "<<(*endCPU - *startCPU)<<" seconds\n\n";
 }
 
 
 /*                  SAMPLE RUN
 
-Matrix Size =       260,000  
+Matrix Size =       270,000  
 
-Last entry in *v2:  2,284,868,056,899,169,288,192 
+Last entry in *v2:  2,657,191,052,668,026,486,784 
 
-Time:               215 seconds  
+Run Time:           234 seconds  
                                                           */
