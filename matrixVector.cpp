@@ -107,9 +107,9 @@ void displayTimes(time_t *startCPU, time_t *endCPU)
 
 /*                  SAMPLE RUN
 
-Matrix Size =       280,000  
+Matrix Size =       290,000  
 
-Last entry in *v2:  3,073,332,383,961,338,347,520 
+Last entry in *v2:  3,536,334,795,277,347,061,760 
 
-Run Time:           251 seconds  
+Run Time:           266 seconds  
                                                           */
