@@ -36,7 +36,7 @@ int main()
 
 	float *A, *v1, *v2;
 
-	unsigned long long matrix_size = 270000;
+	unsigned long long matrix_size = 330000;
 
 	getTime(&startTimeC);
 
@@ -107,9 +107,9 @@ void displayTimes(time_t *startCPU, time_t *endCPU)
 
 /*                  SAMPLE RUN
 
-Matrix Size =       320,000  
+Matrix Size =       330,000  
 
-Last entry in *v2:  5,242,814,840,707,555,000,320 
+Last entry in *v2:  5,929,608,717,331,974,848,512 
 
-Run Time:           334 seconds  
+Run Time:           359 seconds  
                                                           */
