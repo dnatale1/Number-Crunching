@@ -19,10 +19,10 @@ t1 = datetime.datetime.now()
 
 sum = 0
 
-A =[[0 for a in range(90667)] for b in range(90667)]
+A =[[0 for a in range(94667)] for b in range(94667)]
 
-for a in range(90663):
-	for b in range(90664):
+for a in range(94663):
+	for b in range(94664):
 		sum = sum +10
 		A[a][b] = sum
 
@@ -30,10 +30,10 @@ T = torch.tensor(A)
 
 sum = 0
 
-B = [[0 for c in range(90667)] for d in range(90667)]
+B = [[0 for c in range(94667)] for d in range(94667)]
 
-for c in range(90664):
-	for d in range(90667):
+for c in range(94664):
+	for d in range(94667):
 		sum = sum + 10
 		B[c][d] = sum
 
@@ -45,16 +45,16 @@ print(len(B[0]))
 
 print(len(B))
 
-outFile1 = open('PYMATRIX1', 'w')
-for m in T:
-	outFile1.write(str(m))
-outFile1.close()
+#outFile1 = open('PYMATRIX1', 'w')
+#for m in T:
+	#outFile1.write(str(m))
+#outFile1.close()
 
 
-outFile2 = open('PYMATRIX2', 'w')
-for n in U:
-	outFile2.write(str(n))
-outFile2.close()
+#outFile2 = open('PYMATRIX2', 'w')
+#for n in U:
+	#outFile2.write(str(n))
+#outFile2.close()
 
 T = T.to(torch.double)
 U = U.to(torch.double)
