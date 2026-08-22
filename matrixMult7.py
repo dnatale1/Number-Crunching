@@ -7,9 +7,9 @@
 #
 # I used PyTorch 2.6 and Python 3.10.
 #
-# The last entry in the PYMATRIXRESULT file is: 306,307,165,589,493,541,469,421,568. 
+# The last entry in the PYMATRIXRESULT file is: 380,107,549,653,666,581,866,086,400. 
 #
-# Ran on JarvisLabs GPU Cloud in India for 90 minutes.
+# Ran on JarvisLabs GPU Cloud in India for 100 minutes.
 
 
 import torch
@@ -45,16 +45,16 @@ print(len(B[0]))
 
 print(len(B))
 
-#outFile1 = open('PYMATRIX1', 'w')
-#for m in T:
-	#outFile1.write(str(m))
-#outFile1.close()
+outFile1 = open('PYMATRIX1', 'w')
+for m in T:
+	outFile1.write(str(m))
+outFile1.close()
 
 
-#outFile2 = open('PYMATRIX2', 'w')
-#for n in U:
-	#outFile2.write(str(n))
-#outFile2.close()
+outFile2 = open('PYMATRIX2', 'w')
+for n in U:
+	outFile2.write(str(n))
+outFile2.close()
 
 T = T.to(torch.double)
 U = U.to(torch.double)
