@@ -7,9 +7,13 @@
 #
 # I used PyTorch 2.6 and Python 3.10.
 #
-# The last entry in the PYMATRIXRESULT3D file is: 14,427,899,183,446,228,832,616,448
+# The last entry in the PYMATRIXRESULT3D file is: 20,196,485,028,351,298,000,000,000.
 #
-# Ran on JarvisLabs GPU Cloud in India for 2 hours.
+# Ran on JarvisLabs GPU Cloud in India for 2 minutes.
+
+# Compared to my matrixMultThreeDimensions program where I was creating Python nested lists of this scale (2037^3 or approximately 8.46 billion elements) introduces massive memory overhead. A standard Python list of that size requires hundreds of gigabytes of RAM. Converting it afterwards with torch.tensor() duplicates this memory requirement. To run this instantly and efficiently, you should bypass Python lists and loops entirely and generate the tensors natively using PyTorch vectorization.
+# Natively Optimized PyTorch Code: Because the values exceed 2.14 X 10^9, you must use torch.int64 (LongTensor) to prevent integer overflow.
+
 
 
 import torch
@@ -70,24 +74,6 @@ t2 = datetime.datetime.now()
 
 print (t2 - t1)
 
-#Creating Python nested lists of this scale (2037^3 or approximately 8.46 billion elements) introduces massive memory overhead. A standard Python list of that size requires hundreds of gigabytes of RAM. Converting it afterwards with torch.tensor() duplicates this memory requirement.To run this instantly and efficiently, you should bypass Python lists and loops entirely and generate the tensors natively using PyTorch vectorization.
-#Natively Optimized PyTorch Code: Because the values exceed 2.14 X 10^9, you must use torch.int64 (LongTensor) to prevent integer overflow.
-
-# 1. Generate Tensor T
-#T = torch.zeros((2037, 2037, 2037), dtype=torch.int64)
-#elements_A = 2033 * 2034 * 2035
-
-# Create a flattened sequence [10, 20, 30, ...] and reshape it to fit the slice
-#seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(2033, 2034, 2035)
-#T[:2033, :2034, :2035] = seq_A
-
-# 2. Generate Tensor U
-#U = torch.zeros((2037, 2037, 2037), dtype=torch.int64)
-#elements_B = 2035 * 2036 * 2037
-
-# Create the sequence for B and reshape it to fit the slice
-#seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(2035, 2036, 2037)
-#U[:2035, :2036, :2037] = seq_B
 
 #Why This Fix Is Necessary? 1)Execution Time: The original for loops would take hours to run sequentially in Python. The vectorized code completes in a few milliseconds.
 #2)Memory Management: Instead of heavy Python object wrappers, PyTorch allocates a raw block of contiguous memory.
