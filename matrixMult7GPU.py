@@ -9,7 +9,7 @@
 #
 # The last entry in the PYMATRIXRESULT file is: 467,493,239,184,614,514,757,730,304. 
 #
-# Ran on JarvisLabs GPU Cloud in India for 10 minutes.
+# Ran on Jarvislabs.ai GPU Cloud Platform in India for 10 minutes.
 
 
 import torch
