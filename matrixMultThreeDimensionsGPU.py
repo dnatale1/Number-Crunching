@@ -3,11 +3,11 @@
 #
 # Author: David Galilei Natale
 #
-# September 2026
+# October 2026
 #
 # I used PyTorch 2.6 and Python 3.10.
 #
-# The last entry in the PYMATRIXRESULT3D file is: 67,207,364,377,869,830,452,150,272.
+# The last entry in the PYMATRIXRESULT3D file is: 88,115,387,027,144,380,577,218,560.
 #                                                 
 # Ran on Jarvislabs.ai GPU Cloud Platform in India for 2 minutes.
 
@@ -28,23 +28,23 @@ t1 = datetime.datetime.now()
 sum = 0
 
 # 1. Generate Tensor T
-T = torch.zeros((2537, 2537, 2537), dtype=torch.int64)
-elements_A = 2533 * 2534 * 2535
+T = torch.zeros((2637, 2637, 2637), dtype=torch.int64)
+elements_A = 2633 * 2634 * 2635
 
 # Create a flattened sequence [10, 20, 30, ...] and reshape it to fit the slice
-seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(2533, 2534, 2535)
-T[:2533, :2534, :2535] = seq_A
+seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(2633, 2634, 2635)
+T[:2633, :2634, :2635] = seq_A
 
 
 sum = 0
 
 # 2. Generate Tensor U
-U = torch.zeros((2537, 2537, 2537), dtype=torch.int64)
-elements_B = 2535 * 2536 * 2537
+U = torch.zeros((2637, 2637, 2637), dtype=torch.int64)
+elements_B = 2635 * 2636 * 2637
 
 # Create the sequence for B and reshape it to fit the slice
-seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(2535, 2536, 2537)
-U[:2535, :2536, :2537] = seq_B
+seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(2635, 2636, 2637)
+U[:2635, :2636, :2637] = seq_B
 
 
 outFile1 = open('PYMATRIX13D', 'w')
