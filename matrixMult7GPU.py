@@ -7,7 +7,7 @@
 #
 # I used PyTorch 2.6 and Python 3.10.
 #
-# The last entry in the PYMATRIXRESULT file is: 467,493,239,184,614,514,757,730,304. 
+# The last entry in the PYMATRIXRESULT file is: 570,259,056,327,118,567,717,732,352. 
 #
 # Ran on Jarvislabs.ai GPU Cloud Platform in India for 10 minutes.
 
@@ -20,23 +20,23 @@ t1 = datetime.datetime.now()
 sum = 0
 
 # 1. Generate Tensor T
-T = torch.zeros((94667, 94667), dtype=torch.int64)
-elements_A = 94663 * 94664
+T = torch.zeros((102667, 102667), dtype=torch.int64)
+elements_A = 102663 * 102664
 
 # Create a flattened sequence [10, 20, 30, ...] and reshape it to fit the slice
-seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(94663, 94664)
-T[:94663, :94664] = seq_A
+seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(102663, 102664)
+T[:102663, :102664] = seq_A
 
 
 sum = 0
 
 # 2. Generate Tensor U
-U = torch.zeros((94667, 94667), dtype=torch.int64)
-elements_B = 94664 * 94667
+U = torch.zeros((102667, 102667), dtype=torch.int64)
+elements_B = 102664 * 102667
 
 # Create the sequence for B and reshape it to fit the slice
-seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(94664, 94667)
-U[:94664, :94667] = seq_B
+seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(102664, 102667)
+U[:102664, :102667] = seq_B
 
 
 outFile1 = open('PYMATRIX1', 'w')
