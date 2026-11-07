@@ -7,7 +7,7 @@
 #
 # I used PyTorch 2.6 and Python 3.10.
 #
-# The last entry in the PYMATRIXRESULT3D file is: 147,057,778,363,716,020,977,270,784.
+# The last entry in the PYMATRIXRESULT3D file is: 187,450,402,368,360,503,840,866,304.
 #                                                 
 # Ran on Jarvislabs.ai GPU Cloud Platform in India for 2 minutes.
 
@@ -28,38 +28,38 @@ t1 = datetime.datetime.now()
 sum = 0
 
 # 1. Generate Tensor T
-T = torch.zeros((2837, 2837, 2837), dtype=torch.int64)
-elements_A = 2833 * 2834 * 2835
+T = torch.zeros((2937, 2937, 2937), dtype=torch.int64)
+elements_A = 2933 * 2934 * 2935
 
 # Create a flattened sequence [10, 20, 30, ...] and reshape it to fit the slice
-seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(2833, 2834, 2835)
-T[:2833, :2834, :2835] = seq_A
+seq_A = torch.arange(10, elements_A * 10 + 1, 10, dtype=torch.int64).view(2933, 2934, 2935)
+T[:2933, :2934, :2935] = seq_A
 
 
 sum = 0
 
 # 2. Generate Tensor U
-U = torch.zeros((2837, 2837, 2837), dtype=torch.int64)
-elements_B = 2835 * 2836 * 2837
+U = torch.zeros((2937, 2937, 2937), dtype=torch.int64)
+elements_B = 2935 * 2936 * 2937
 
 # Create the sequence for B and reshape it to fit the slice
-seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(2835, 2836, 2837)
-U[:2835, :2836, :2837] = seq_B
+seq_B = torch.arange(10, elements_B * 10 + 1, 10, dtype=torch.int64).view(2935, 2936, 2937)
+U[:2935, :2936, :2937] = seq_B
 
 
-outFile1 = open('PYMATRIX13D', 'w')
-for m in T:
-	outFile1.write(str(m))
-outFile1.close()
+#outFile1 = open('PYMATRIX13D', 'w')
+#for m in T:
+	#outFile1.write(str(m))
+#outFile1.close()
 
 HighestValueMatrix1 = T.max()
 
 print ('Highest Value Matrix 1: ', HighestValueMatrix1)
 
-outFile2 = open('PYMATRIX23D', 'w')
-for n in U:
-	outFile2.write(str(n))
-outFile2.close()
+#outFile2 = open('PYMATRIX23D', 'w')
+#for n in U:
+	#outFile2.write(str(n))
+#outFile2.close()
 
 HighestValueMatrix2 = U.max()
 
@@ -73,10 +73,10 @@ V = torch.bmm(T, U)
 
 torch.set_printoptions(precision = 26)
 
-outFile3 = open('PYMATRIXRESULT3D','w')
-for r in V:
-	outFile3.write(str(r))
-outFile3.close()
+#outFile3 = open('PYMATRIXRESULT3D','w')
+#for r in V:
+	#outFile3.write(str(r))
+#outFile3.close()
 
 HighestValue = V.max()
 
